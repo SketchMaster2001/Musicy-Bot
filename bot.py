@@ -6,4 +6,4 @@ bot = commands.Bot(command_prefix="/")
 bot.load_extension("src.music")
 DiscordComponents(bot)
 
-bot.run("ODE3ODQ1NzQwMTU0OTEyNzY4.YEPcMw.DOJMy_DSauIGUjzZLPS50pbjRGc")
+bot.run("TOKEN_HERE")
