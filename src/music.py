@@ -136,10 +136,10 @@ class Player(wavelink.Player):
             await self.start_playback()
 
     async def choose_track(self, ctx, tracks):
-        def _check(selection, author):
+        def _check(r, u):
             return (
-                selection.custom_id in options
-                and author == ctx.author.id
+                r.user.id == ctx.author.id
+                and r.message.id == msg.id
             )
 
         embed = discord.Embed(
@@ -188,7 +188,7 @@ class Player(wavelink.Player):
 
         try:
             interaction = await self.bot.wait_for(
-                "button_click", timeout=60.0, check=lambda inter: _check(inter, ctx.author.id)
+                "button_click", timeout=60.0, check=lambda inter: _check(inter, ctx.author)
             )
         except asyncio.TimeoutError:
             await msg.delete()
